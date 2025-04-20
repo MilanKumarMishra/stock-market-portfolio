@@ -14,17 +14,17 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (name, email, password) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/users', { name, email, password });
+      const res = await axios.post('https://stock-market-portfolio-backend-5t03.onrender.com/api/users', { name, email, password });
       console.log('Register response:', res.data);
     } catch (error) {
       console.error('Register error:', error);
       throw error;
     }
   };
-  
+
   const login = async (email, password) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/auth', { email, password });
+      const res = await axios.post('https://stock-market-portfolio-backend-5t03.onrender.com/api/auth', { email, password });
       localStorage.setItem('token', res.data.token);
       setUser({ token: res.data.token });
       console.log('Login response:', res.data);

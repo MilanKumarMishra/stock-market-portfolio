@@ -33,7 +33,9 @@ const Portfolio = () => {
   useEffect(() => {
     const fetchPortfolio = async () => {
       try {
-        const res = await axios.get('/api/portfolio', { headers: { 'x-auth-token': user.token } });
+        const res = await axios.get('https://stock-market-portfolio-backend-5t03.onrender.com/api/portfolio', {
+          headers: { 'x-auth-token': user.token },
+        });
         setPortfolio(res.data);
         setLoading(false);
       } catch (error) {
@@ -144,7 +146,7 @@ const Portfolio = () => {
   const handleAddStock = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/api/portfolio/add', 
+      const res = await axios.post('https://stock-market-portfolio-backend-5t03.onrender.com/api/portfolio/add', 
         { symbol: addSymbol, shares: addShares, purchasePrice: addPurchasePrice }, 
         { headers: { 'x-auth-token': user.token } }
       );
@@ -162,7 +164,7 @@ const Portfolio = () => {
   const handleRemoveStock = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.delete(`/api/portfolio/remove/${removeSymbol}`, {
+      const res = await axios.delete(`https://stock-market-portfolio-backend-5t03.onrender.com/api/portfolio/remove/${removeSymbol}`, {
         headers: { 'x-auth-token': user.token },
       });
       setPortfolio(res.data);
